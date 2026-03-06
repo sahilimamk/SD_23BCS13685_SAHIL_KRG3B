@@ -1,0 +1,93 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Payment Processing Template">
+    <mxGraphModel dx="1700" dy="900" grid="1" gridSize="10" guides="1" connect="1">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- USERS -->
+        <mxCell id="users" value="Users" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="merchants" value="Merchants" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="40" y="360" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- API GATEWAY ICON PLACEHOLDER -->
+        <mxCell id="apigateway" value="API Gateway Icon" style="shape=rectangle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="260" y="290" width="100" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- LOAD BALANCER ICON PLACEHOLDER -->
+        <mxCell id="loadbalancer" value="Load Balancer Icon" style="shape=ellipse;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="420" y="300" width="120" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- CONTROLLER -->
+        <mxCell id="controller" value="Payment Controller (REST API)" style="rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="300" width="260" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- SERVICES -->
+        <mxCell id="intent" value="Payment Intent Service" style="rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="180" width="240" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="session" value="Payment Session Service" style="rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="300" width="240" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="processor" value="Payment Processor Service" style="rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="420" width="240" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- INTERFACES -->
+
+        <mxCell id="paymentservice" value="&lt;&lt;Interface&gt;&gt;&#xa;PaymentService" style="rounded=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="260" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="repository" value="&lt;&lt;Interface&gt;&gt;&#xa;TransactionRepository" style="rounded=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="120" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gatewayclient" value="&lt;&lt;Interface&gt;&gt;&#xa;GatewayClient" style="rounded=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="420" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- DATABASE PLACEHOLDER -->
+
+        <mxCell id="database" value="Database Icon" style="shape=cylinder;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="180" width="120" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- EXTERNAL PAYMENT GATEWAY -->
+
+        <mxCell id="externalgateway" value="External Payment Gateway Icon" style="shape=rectangle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="450" width="160" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- EDGES -->
+
+        <mxCell edge="1" source="users" target="apigateway" parent="1"/>
+        <mxCell edge="1" source="merchants" target="apigateway" parent="1"/>
+
+        <mxCell edge="1" source="apigateway" target="loadbalancer" parent="1"/>
+        <mxCell edge="1" source="loadbalancer" target="controller" parent="1"/>
+
+        <mxCell edge="1" source="controller" target="intent" parent="1"/>
+        <mxCell edge="1" source="controller" target="session" parent="1"/>
+
+        <mxCell edge="1" source="session" target="processor" parent="1"/>
+
+        <mxCell edge="1" source="intent" target="repository" parent="1"/>
+        <mxCell edge="1" source="repository" target="database" parent="1"/>
+
+        <mxCell edge="1" source="processor" target="gatewayclient" parent="1"/>
+        <mxCell edge="1" source="gatewayclient" target="externalgateway" parent="1"/>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
